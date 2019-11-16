@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation"
+		value="true" />
+	<constant name="struts.devMode" value="true" />
+
+	<package name="default" namespace="/" extends="struts-default">
+		<!-- Linking actions -->
+
+		<action name="index">
+			<result>index.jsp</result>
+		</action>
+
+		<action name="*Link" class="com.wdf.actions.LinkAction"
+			method="{1}">
+			<result name="register">/webcontent/registerform.jsp</result>
+			<result name="login">/webcontent/loginform.jsp</result>
+			<result name="profile">/webcontent/profile.jsp</result>
+			<result name="search">/webcontent/searchresults.jsp</result>
+			<result name="passwordretrievaltrigger">/webcontent/passwordretrievaltrigger.jsp</result>
+			<result name="passwordretrieval">/webcontent/passwordretrieval.jsp</result>
+			<allowed-methods>login,register,profile,search,passwordRetrieval,passwordRetrievalTrigger</allowed-methods>
+		</action>
+		
+		<!-- Profile Actions -->
+		<action name="getProfile" class="com.wdf.actions.GetProfileAction">
+			<result name="success">/webcontent/profile.jsp</result>
+		</action>
+		
+		<!-- Password Retrieval Actions -->
+		<action name="PasswordRetrievalTrigger"
+			class="com.wdf.actions.PasswordRetrievalTriggerAction">
+			<result name="success">/webcontent/message.jsp</result>
+			<result name="input">/webcontent/passwordretrievatrigger.jsp</result>
+		</action>
+
+		<action name="PasswordRetrieval"
+			class="com.wdf.actions.PasswordRetrievalAction">
+			<result name="success">/webcontent/message.jsp</result>
+			<result name="input">/webcontent/passwordretrieval.jsp</result>
+		</action>
+		
+		<!-- Search Actions -->
+		<action name="search" class="com.wdf.actions.SearchAction">
+			<result name="success">/webcontent/searchresults.jsp</result>
+		</action>
+
+		<!-- CRUD Actions -->
+		<action name="register" class="com.wdf.actions.RegisterAction">
+			<result name="success">/webcontent/message.jsp</result>
+			<result name="error">/webcontent/registerform.jsp</result>
+			<result name="input">/webcontent/registerform.jsp</result>
+		</action>
+
+		<action name="login" class="com.wdf.actions.LoginAction">
+			<result name="success">/webcontent/message.jsp</result>
+			<result name="error">/webcontent/loginform.jsp</result>
+			<result name="input">/webcontent/loginform.jsp</result>
+		</action>
+
+
+		<!-- Catch All, direct to 404 error page -->
+		<action name="*">
+			<result>/webcontent/404.jsp</result>
+		</action>
+		<!-- Add additional "example" package actions here. -->
+
+
+
+	</package>
+
+	<!-- Add addition packages and configuration here. -->
+</struts>
