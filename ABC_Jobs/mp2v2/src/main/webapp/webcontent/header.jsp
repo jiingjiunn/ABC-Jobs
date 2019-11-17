@@ -23,7 +23,8 @@
 			<div class="container">
 				<a class="navbar-brand" href="index">ABC Jobs</a>
 
-				<s:form cssClass="form-inline mr-auto" action="search" theme="simple">
+				<s:form cssClass="form-inline mr-auto" action="search"
+					theme="simple">
 					<div class="input-group">
 						<s:textfield cssClass="form-control" type="search"
 							placeholder="Search" name="query"></s:textfield>
@@ -33,7 +34,7 @@
 					</div>
 				</s:form>
 
-<!--  
+				<!--  
 				<form class="form-inline mr-auto" action="search" method="get">
 					<div class="input-group">
 						<input class="form-control" type="search" placeholder="Search"
@@ -62,8 +63,16 @@
 					</ul>
 					<div class="dropdown-divider"></div>
 					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link" href="loginLink">Login</a></li>
-						<li class="nav-item"><a class="nav-link" href="registerLink">Register</a></li>
+						<s:if test="%{#session.login}">
+							<li class="nav-item"><a class="nav-link"
+								href='getProfile?email=<s:property value="#session.email"/>'><s:property
+										value="#session.name" /></a></li>
+							<li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
+						</s:if>
+						<s:else>
+							<li class="nav-item"><a class="nav-link" href="loginLink">Login</a></li>
+							<li class="nav-item"><a class="nav-link" href="registerLink">Register</a></li>
+						</s:else>
 					</ul>
 				</div>
 			</div>

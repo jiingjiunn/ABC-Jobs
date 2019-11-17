@@ -54,11 +54,16 @@
 			<result name="error">/webcontent/registerform.jsp</result>
 			<result name="input">/webcontent/registerform.jsp</result>
 		</action>
-
+		<!-- Login & Logout Actions -->
 		<action name="login" class="com.wdf.actions.LoginAction">
 			<result name="success">/webcontent/message.jsp</result>
 			<result name="error">/webcontent/loginform.jsp</result>
 			<result name="input">/webcontent/loginform.jsp</result>
+		</action>
+		
+		<action name="logout" class="com.wdf.actions.LoginAction" method="logout">
+			<result name="success">/webcontent/message.jsp</result>
+			<allowed-methods>logout</allowed-methods>
 		</action>
 
 

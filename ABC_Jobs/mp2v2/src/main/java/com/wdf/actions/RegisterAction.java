@@ -47,6 +47,7 @@ public class RegisterAction extends ActionSupport {
 			VerificationEmail Vemail = new VerificationEmail();
 			Vemail.setName(fname + " " + lname);
 			Vemail.setEmail(email);
+			Vemail.setLink("localhost:8080/mp2v2/verify?email="+email);
 			Vemail.setSubject("Verification Email for " + Vemail.getName() );
 			try {
 				TLSEmail.sendTLSEmail(Vemail);
