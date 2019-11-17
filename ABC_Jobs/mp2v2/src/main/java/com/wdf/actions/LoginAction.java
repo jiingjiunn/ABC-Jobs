@@ -26,9 +26,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	public String execute() {
 //		HttpSession session = ServletActionContext.getRequest().getSession(true);
 		try {
-			System.out.println(MD5.getMd5(this.password));
 			user = (User) userDao.getByEmail(this.email);
-			System.out.println(user.getPassword());
 			if (user.getPassword().equals(MD5.getMd5(this.password))) {
 				sessionmap.put("email", email);
 				sessionmap.put("name", user.getName());
@@ -82,6 +80,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		this.password = password;
 	}
 
+//  Validation
 	public void validate() {
 		if (this.getEmail().length() == 0) {
 			addFieldError("email", "Email is required.");

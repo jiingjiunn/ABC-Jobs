@@ -22,8 +22,31 @@ public class ProfileDao implements IDao {
 
 	@Override
 	public int update(Entity e) throws SQLException, ClassNotFoundException, Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		int rowsUpdated = -1;
+		Profile p = (Profile) e;
+		String sql;
+		conn = dbManager.getConnection();
+		sql = "UPDATE user"
+				+ " LEFT JOIN profile"
+				+ " ON user.id = profile.userid_fk"
+				+ " SET"
+				+ " firstname = ?,"
+				+ " lastname = ?,"
+				+ " jobrole = ?,"
+				+ " employer = ?,"
+				+ " location = ?"
+				+ " WHERE email = ?";
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		// First parameter is the id of the company entity
+		pstmt.setString(1, p.getFirstName());
+		pstmt.setString(2, p.getLastName());
+		pstmt.setString(3, p.getJobrole());
+		pstmt.setString(4, p.getEmployer());
+		pstmt.setString(5, p.getLocation());
+		pstmt.setString(6, p.getEmail());
+		
+		rowsUpdated = pstmt.executeUpdate();
+		return rowsUpdated;
 	}
 
 	@Override

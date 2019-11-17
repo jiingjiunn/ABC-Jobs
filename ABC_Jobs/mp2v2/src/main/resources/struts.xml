@@ -26,9 +26,15 @@
 		</action>
 		
 		<!-- Profile Actions -->
-		<action name="getProfile" class="com.wdf.actions.GetProfileAction">
+		<action name="*Profile" class="com.wdf.actions.ProfileAction" method="{1}">
 			<result name="success">/webcontent/profile.jsp</result>
+			<result name="edit">/webcontent/profileform.jsp</result>
+			<result name="input">/webcontent/profileform.jsp</result>
+			<result name="update" type="chain">getProfile</result>
+			<allowed-methods>get, edit, update</allowed-methods>
 		</action>
+		
+		
 		
 		<!-- Password Retrieval Actions -->
 		<action name="PasswordRetrievalTrigger"
@@ -48,12 +54,13 @@
 			<result name="success">/webcontent/searchresults.jsp</result>
 		</action>
 
-		<!-- CRUD Actions -->
+		<!-- Registration Actions -->
 		<action name="register" class="com.wdf.actions.RegisterAction">
 			<result name="success">/webcontent/message.jsp</result>
 			<result name="error">/webcontent/registerform.jsp</result>
 			<result name="input">/webcontent/registerform.jsp</result>
 		</action>
+		
 		<!-- Login & Logout Actions -->
 		<action name="login" class="com.wdf.actions.LoginAction">
 			<result name="success">/webcontent/message.jsp</result>

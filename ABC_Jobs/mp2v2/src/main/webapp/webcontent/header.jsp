@@ -12,8 +12,7 @@
 <link rel="stylesheet"
 	href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
 <link rel="stylesheet" href="webcontent/css/main.css" />
-<link href="webcontent/css/iconic/open-iconic-bootstrap.min.css"
-	rel="stylesheet">
+<script src="https://kit.fontawesome.com/c79997b7ac.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -34,21 +33,6 @@
 					</div>
 				</s:form>
 
-				<!--  
-				<form class="form-inline mr-auto" action="search" method="get">
-					<div class="input-group">
-						<input class="form-control" type="search" placeholder="Search"
-							name="query">
-						<div class="input-group-append">
-							<button class="btn btn-outline-secondary" type="submit">
-								<span class="oi oi-magnifying-glass"></span>
-							</button>
-						</div>
-					</div>
-				</form>
--->
-
-
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarContent">
 					<span class="navbar-toggler-icon"></span>
@@ -58,8 +42,6 @@
 				<div class="collapse navbar-collapse" id="navbarContent">
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item"><a class="nav-link disabled" href="#">Jobs</a></li>
-						<li class="nav-item"><a class="nav-link" href="profileLink">User
-								Profile</a></li>
 					</ul>
 					<div class="dropdown-divider"></div>
 					<ul class="navbar-nav">
