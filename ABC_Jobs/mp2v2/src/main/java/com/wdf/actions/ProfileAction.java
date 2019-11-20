@@ -60,7 +60,10 @@ public class ProfileAction extends ActionSupport {
 			profile.setJobrole(jobrole);
 
 			i = profiledao.update(profile);
-
+			if(i > 0) {
+				System.out.println(profile.toString());
+			}
+			System.out.println("from update");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

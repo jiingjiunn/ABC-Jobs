@@ -42,7 +42,6 @@ public class UserDao implements IDao {
 			return rowsInserted;
 			
 		} catch (SQLException ex) {
-			System.out.println(ex);
 			ex.printStackTrace();
 			return rowsInserted;
 		}
@@ -141,6 +140,20 @@ public class UserDao implements IDao {
 			u.setCode(rs.getString("code"));
 		}
 		return u;
+	}
+	
+	public int getIDByEmail(String LoginEmail) throws ClassNotFoundException, SQLException {
+		String sql = "SELECT id FROM user WHERE email = ?";
+		conn = dbManager.getConnection();
+		PreparedStatement pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, LoginEmail);
+		ResultSet rs = pstmt.executeQuery();
+		
+		int id = 0;
+		while(rs.next()) {
+			id = rs.getInt("id");
+		}
+		return id;
 	}
 	
 	public int updateField(String col, String s, String email) throws SQLException, ClassNotFoundException, Exception {

@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.wdf.entity.Entity;
 import com.wdf.entity.Profile;
+import com.wdf.entity.User;
 
 public class ProfileDao implements IDao {
 	Connection conn = null;
@@ -16,8 +17,36 @@ public class ProfileDao implements IDao {
 
 	@Override
 	public int insert(Entity e) throws SQLException, ClassNotFoundException, Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		int rowsInserted = -1;
+		String sql;
+		System.out.println("connecting to database");
+		User u = (User) e;
+		conn = dbManager.getConnection();
+		System.out.println("Connected to database");
+		// SQL script to insert record into the company table with the parameter
+		// id - Is a auto increment field. It will be inserted automatically
+		try {
+			sql = "INSERT INTO user (firstname, lastname, email, password)" + " VALUES (?,?,?,md5(?))";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			// First parameter is the first name of the user
+			pstmt.setString(1, u.getFirstName());
+			// Second parameter is the second name of the user
+			pstmt.setString(2, u.getLastName());
+			// Third parameter is the email of the user
+			pstmt.setString(3, u.getEmail());
+			// fourth parameter is the password of the user
+			pstmt.setString(4, u.getPassword());
+
+			// returns the number of records inserted
+			rowsInserted = pstmt.executeUpdate();
+			System.out.println("rowInserted");
+			return rowsInserted;
+			
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+			return rowsInserted;
+
 	}
 
 	@Override
@@ -27,7 +56,7 @@ public class ProfileDao implements IDao {
 		String sql;
 		conn = dbManager.getConnection();
 		sql = "UPDATE user"
-				+ " LEFT JOIN profile"
+				+ " INNER JOIN profile"
 				+ " ON user.id = profile.userid_fk"
 				+ " SET"
 				+ " firstname = ?,"
@@ -44,7 +73,7 @@ public class ProfileDao implements IDao {
 		pstmt.setString(4, p.getEmployer());
 		pstmt.setString(5, p.getLocation());
 		pstmt.setString(6, p.getEmail());
-		
+		System.out.println(pstmt);
 		rowsUpdated = pstmt.executeUpdate();
 		return rowsUpdated;
 	}
@@ -72,6 +101,7 @@ public class ProfileDao implements IDao {
 			profile.setLocation(rs.getString("location"));
 			profile.setJobrole(rs.getString("jobrole"));
 		}
+
 		return profile;
 	}
 
