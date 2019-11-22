@@ -33,9 +33,7 @@
 			<result name="update" type="chain">getProfile</result>
 			<allowed-methods>get, edit, update</allowed-methods>
 		</action>
-		
-		
-		
+			
 		<!-- Password Retrieval Actions -->
 		<action name="PasswordRetrievalTrigger"
 			class="com.wdf.actions.PasswordRetrievalTriggerAction">

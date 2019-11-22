@@ -84,7 +84,7 @@ public class RegisterAction extends ActionSupport {
 		final String PASSWORD_PATTERN = "((?=.*[a-z])(?=.*\\d)(?=.*[A-Z])(?=.*[@#$%!]).{8,40})";
 		pattern = Pattern.compile(PASSWORD_PATTERN);
 		matcher = pattern.matcher(this.getPassword());
-	    if (matcher.matches()) {
+	    if (!matcher.matches()) {
 	    	addFieldError("password", "Password is not strong enough.");
 	    }	    
 	    if (!this.getPassword().equals(this.getCpassword())) {

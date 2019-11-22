@@ -44,14 +44,14 @@ public class ConfigTest extends StrutsTestCase {
                 ActionSupport.INPUT.equals(result));
     }
 
-    protected Map assertFieldErrors(ActionSupport action) throws Exception {
+    protected Map<?, ?> assertFieldErrors(ActionSupport action) throws Exception {
         assertTrue(action.hasFieldErrors());
         return action.getFieldErrors();
     }
 
-    protected void assertFieldError(Map field_errors, String field_name, String error_message) {
+    protected void assertFieldError(Map<?, ?> field_errors, String field_name, String error_message) {
 
-        List errors = (List) field_errors.get(field_name);
+        List<?> errors = (List<?>) field_errors.get(field_name);
         assertNotNull("Expected errors for " + field_name, errors);
         assertTrue("Expected errors for " + field_name, errors.size()>0);
         // TODO: Should be a loop
@@ -80,9 +80,9 @@ public class ConfigTest extends StrutsTestCase {
     }
 
     protected void assertResult(ActionConfig config, String result_name, String result_value) {
-        Map results = config.getResults();
+        Map<?, ?> results = config.getResults();
         ResultConfig result = (ResultConfig) results.get(result_name);
-        Map params = result.getParams();
+        Map<?, ?> params = result.getParams();
         String value = (String) params.get("actionName");
         if (value == null)
             value = (String) params.get("location");
