@@ -30,6 +30,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 			if (user.getPassword().equals(MD5.getMd5(this.password))) {
 				sessionmap.put("email", email);
 				sessionmap.put("name", user.getName());
+				sessionmap.put("role", user.getAccountType());
 				addActionMessage("Welcome back, " + user.getName());
 				return "success";
 			} else {

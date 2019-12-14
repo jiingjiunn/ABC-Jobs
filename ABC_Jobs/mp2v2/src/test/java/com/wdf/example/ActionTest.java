@@ -53,4 +53,6 @@ public class ActionTest extends StrutsTestCase{
 		assertEquals("Result returned from executing the action was not success but it should have been.","success",result);
 		
 	}
+
+
 }

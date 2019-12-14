@@ -43,9 +43,8 @@ public class ProfileDao implements IDao {
 			return rowsInserted;
 			
 		} catch (SQLException ex) {
-			ex.printStackTrace();
+			throw new Exception(ex);
 		}
-			return rowsInserted;
 
 	}
 

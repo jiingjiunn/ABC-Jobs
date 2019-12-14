@@ -10,8 +10,8 @@
 	<package name="default" namespace="/" extends="struts-default">
 		<!-- Linking actions -->
 
-		<action name="index">
-			<result>index.jsp</result>
+		<action name="Index" class="com.wdf.actions.IndexAction">
+			<result name="SUCCESS">/webcontent/home.jsp</result>
 		</action>
 
 		<action name="*Link" class="com.wdf.actions.LinkAction"
